@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:wght@400;500;600;700&display=swap'); 
+/*імпортуємо шрифт для сайту*/
+
+:root {
+    --sidebar-width: 200px;
+}
+
+body {
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    padding-left: var(--sidebar-width);
+    margin: 0;
+    background-color: #b9b9b9;	
+}
+
+.container {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 1. СТИЛІ ДЛЯ ВЕРТИКАЛЬНОЇ БІЧНОЇ ПАНЕЛІ (HEADER) */
+header {
+    /* Фіксуємо панель зліва на всю висоту */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    padding: 0;
+    background-color: #4a4aff;
+    border-right: 1px solid #333842; /* Межа праворуч */
+    border-bottom: none;
+    z-index: 100;
+}
+
+.header-nav {
+    display: flex;
+    flex-direction: column; /* Ключ до вертикального розташування: Логотип, потім Навігація */
+    align-items: flex-start;
+    height: 100%;
+    padding: 20px 0;
+}
+
+/* 2. СТИЛІ ДЛЯ ЛОГОТИПУ */
+.header-nav img {
+    /* Центрування логотипу в межах панелі */
+    margin: 0 auto 30px auto; 
+    display: block;
+}
+
+.logo {
+    /* Логотип-текст, якщо ви його використовуєте */
+    font-weight: 700;
+    font-size: 17px;
+    color: #e7e7e7;
+    letter-spacing: 1.5px;
+}
+
+/* 3. СТИЛІ ДЛЯ НАВІГАЦІЙНОГО СПИСКУ */
+.nav {
+    flex-grow: 1; /* Навігація займе решту вертикального простору */
+    position: relative;
+    width: 100%;
+}
+
+.nav-list {
+    /* Робимо список вертикальним */
+    display: flex;
+    flex-direction: column; 
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    position: relative;
+    text-align: left; /* Вирівнювання пунктів меню ліворуч */
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.nav-link {
+    color: #e7e7e7;
+    text-decoration: none;
+    display: block;
+    padding: 15px 25px; /* Збільшений відступ для вертикальної панелі */
+    font-size: 20px; 
+    transition: color 0.3s ease;
+}
+
+/* ЕФЕКТИ НАВЕДЕННЯ ДЛЯ ОСНОВНИХ ПУНКТІВ */
+.nav-item:hover {
+    background-color: #4aacff;
+}
+
+.nav-item:hover > .nav-link {
+    color: #ffffff;
+    border-bottom-color: transparent; /* Прибираємо можливу нижню межу */
+}
+
+
+/* 4. СТИЛІ ДЛЯ ВИПАДАЮЧОГО ПІДМЕНЮ (SUBMENU) */
+.submenu {
+    /* Змушуємо підменю випадати праворуч */
+    position: absolute;
+    top: 0;
+    left: 100%; /* Зсуваємо вправо */
+    background-color: #4aacff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: var(--sidebar-width);
+    z-index: 20;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.submenu-item {
+    display: block;
+    text-align: left;
+}
+
+.submenu-link {
+    color: #e7e7e7;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.submenu-item:hover .submenu-link {
+    background-color: #555555; /* Додатковий ефект наведення на підпункти */
+    color: #ffffff;
+}
+
+.nav-item.has-submenu:hover .submenu {
+    display: block;
+    opacity: 1;
+}
+
+
+/*2 секція*/
+
+.description {
+	background-color: #F5F5F5;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	min-height: 86vh;
+	display: flex;
+    
+    	/* КЛЮЧОВА ЗМІНА: Притискаємо вміст до початку (ліворуч) */
+    	justify-content: flex-start; 
+    
+    	/* КЛЮЧОВА ЗМІНА: Притискаємо вміст до початку (вгору) */
+    	align-items: flex-start; 
+    
+    	/* Додаємо внутрішній відступ 30px для всієї сірої області */
+    	padding: 30px; 
+    
+    	column-gap: 30px;
+}
+
+.description-description{
+	font-weight: 700;
+	font-size: 55px;
+	color: black;
+	text-align: center;
+	text-align: center; /* Залишаємо для вирівнювання тексту */
+    	/* Додаємо самовирівнювання, щоб перекрити будь-які ліві зміщення: */
+    	align-self: center;
+}
+
+.description-size{
+	font-weight: 200;
+	font-size: 24px;
+	color: black;
+	margin-top: 15px;
+    text-align: justify;	
+}
+
+.description-title {
+    /* Прибираємо центрування, яке було раніше */
+    display: block; /* Повертаємо до звичайного блоку, якщо він містить лише один великий заголовок */
+    /* Якщо ви залишаєте display: flex, то:
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    */
+    
+    /* Забезпечуємо, щоб він не мав зовнішніх відступів */
+    margin: 0;
+    
+    /* Дозволяємо йому займати всю доступну ширину в межах Flexbox */
+    width: 100%; 
+    max-width: none; /* Прибираємо фіксоване обмеження ширини */
+    
+    /* min-height: 600px; - це може бути зайвим, якщо ви хочете, щоб контент був зверху */
+    min-height: auto; 
+}
+
+.description-title p{
+	font-size: 17px;
+	color: #e8e8e8;
+	text-shadow: 1px 1px 2px #000000;
+	margin-top: 15px; 
+    	margin-bottom: 15px;
+}
+
+.description-image-container {
+    max-width: 520px; 
+    height: auto;
+    margin: 40px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    display: block; 
+}
+
+.description-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+
+/*Додаткова інформація(якщо потрібна)*/
+
+.content{
+	background-color: #0e0f12;
+}
+
+.content-text{
+	color: white;
+	text-align: center;
+	font-size: 27px;
+	font-weight: bold;
+	padding: 15px 15px;	 
+}
+
+/*Футер*/
+
+.contacts {
+    background-color: black; 
+    width: 100%;
+    max-width: none;
+    margin: 0; /* Змінено з '20px 0' на '0' */
+    padding: 20px 0; /* Додано внутрішній відступ, щоб зберегти висоту */
+    text-align: center;
+}
+
+.footer-row-bottom{
+    display: flex;
+    justify-content: center;   
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0 50px;     
+}
+
+.social-links-wrapper {
+        display: flex;  
+        text-align: left;
+}
+
+.social-link {
+        color: white;   
+        text-decoration: none;
+        display: flex;
+}
+
+.footer-row-bottom p {
+        margin: 0;  
+        padding: 0;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+}
